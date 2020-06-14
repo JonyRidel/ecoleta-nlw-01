@@ -6,6 +6,7 @@ import api from '../../services/api';
 import { LeafletMouseEvent } from 'leaflet';
 import axios from 'axios';
 
+import Swal from 'sweetalert2';
 import Dropzone from '../../components/Dropzone';
 
 import './styles.css';
@@ -141,8 +142,12 @@ const CreatePoint = () => {
         }
 
         await api.post('points', data);
-
-        alert('Ponto de coleta criado');
+        
+        await Swal.fire(
+            'Ponto de coleta criado com sucesso!',
+            '',
+            'success'
+        );
 
         history.push('/');
     }
